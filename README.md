@@ -29,6 +29,6 @@ Versão do Python utilizada no projeto ``` Python=3.12.9 ```
 ### Bibliotecas
 Todas as bibliotecas estão no arquivo [requirements.txt](./auxiliar/requirements.txt) na pasta "auxiliar", porém podem serem instaladas pelo comando:
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
