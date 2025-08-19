@@ -32,3 +32,20 @@ Todas as bibliotecas estão no arquivo [requirements.txt](./auxiliar/requirement
 pip install -r requirements.txt
 ```
 
+### Resolvendo Conflitos
+Algumas vezes, ao realizar um processo de ***merge***, pode ocorrer um conflito entre arquivos.
+Nesses casos, é necessário resolvê-lo manualmente. Isso pode ser feito tanto pelo GitHub quanto de forma local, mas, na minha opinião, a melhor opção é resolver localmente.
+
+Para isso basta seguir essa sequencia de commandos:
+```bash
+git checkout -b <nome-branch-resolvendo-conflito>
+git clone <link-repositorio>
+```
+**Resolva o conflito de forma manual, escolhendo qual das duas versões irá continuar.**
+
+```bash
+git commit -m "texto resolvendo o conflito"
+git checkout <branch-que-houve-o-conflito>
+git merge --no-ff <nome-branch-resolvendo-conflito>
+git push origin <branch-que-houve-o-conflito>
+```
