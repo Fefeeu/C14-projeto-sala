@@ -59,3 +59,10 @@ Voltar a um commit específico no Git é fundamental para corrigir problemas no 
 git log --oneline
 git revert <hash-commit> #o commit tem que ser o que gerou o erro, então vai voltar logo antes dele: (commit-1)
 ```
+
+### Git Stash
+O git stash é um comando do Git usado quando você está no meio de uma modificação mas não quer commitar ainda e precisa mudar de branch ou puxar atualizações. Ele guarda suas mudanças temporariamente em uma “pilha” (stash) e deixa o diretório de trabalho limpo.
+
+```bash
+git stash
+```
