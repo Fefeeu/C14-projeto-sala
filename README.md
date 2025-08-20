@@ -75,7 +75,7 @@ O git rebase é um comando usado para reescrever o histórico de commits no Git,
 
 Se você usar git merge, os commits da feature vão se juntar aos da main, mas podem criar um merge commit extra.
 
-Já com git rebase, seus commits da feature são “reposicionados” em cima do último commit da main, como se você tivesse começado a branch a partir dali.
+Já com git rebase, ele fará um merge e seus commits da feature são “reposicionados” em cima do último commit da main, fazendo com que sobre só o comit de criação da branch e o de merge da mesma, na qual esse ultimo commit vai ser um commit especial que emgloba os outros, os commits "deixados em baixo do pano"
 ```bash
 git rebase <nome-da-branch>
 ```
