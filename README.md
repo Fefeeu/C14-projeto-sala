@@ -57,12 +57,25 @@ Voltar a um commit específico no Git é fundamental para corrigir problemas no 
 
 ```bash
 git log --oneline
-git revert <hash-commit> #o commit tem que ser o que gerou o erro, então vai voltar logo antes dele: (commit-1)
+git revert <hash-commit> # o commit tem que ser o que gerou o erro, então vai voltar logo antes dele: (commit-1)
 ```
 
 ### Git Stash
 O git stash é um comando do Git usado quando você está no meio de uma modificação mas não quer commitar ainda e precisa mudar de branch ou puxar atualizações. Ele guarda suas mudanças temporariamente em uma “pilha” (stash) e deixa o diretório de trabalho limpo.
 
 ```bash
-git stash
+git stash # guarda no bolso
+# faz o que quiser
+git stash list
+git stash apply <stash@{N}>
+```
+
+### Git Rebase
+O git rebase é um comando usado para reescrever o histórico de commits no Git, movendo ou reorganizando commits em cima de outro branch ou commit. Ele é muito útil para manter um histórico mais limpo e linear.
+
+Se você usar git merge, os commits da feature vão se juntar aos da main, mas podem criar um merge commit extra.
+
+Já com git rebase, seus commits da feature são “reposicionados” em cima do último commit da main, como se você tivesse começado a branch a partir dali.
+```bash
+git rebase <nome-da-branch>
 ```
