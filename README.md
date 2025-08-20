@@ -51,3 +51,11 @@ git checkout <branch-que-houve-o-conflito>
 git merge --no-ff <nome-branch-resolvendo-conflito>
 git push origin <branch-que-houve-o-conflito>
 ```
+
+### Voltando Para Um commit
+Voltar a um commit específico no Git é fundamental para corrigir problemas no projeto. Quando um commit introduz erros ou falhas, reverter para um ponto estável garante que o código volte a funcionar corretamente, evitando que bugs se espalhem. Essa prática ajuda a manter a integridade do histórico do projeto e permite que a equipe avance com mais segurança, já que sempre é possível recuperar versões anteriores confiáveis do código.
+
+```bash
+git log --oneline
+git revert <hash-commit> #o commit tem que ser o que gerou o erro, então vai voltar logo antes dele: (commit-1)
+```
