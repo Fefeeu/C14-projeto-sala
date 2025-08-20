@@ -26,6 +26,8 @@ git push origin <nome-da-feature>
 ### Python3
 Versão do Python utilizada no projeto ``` Python=3.12.9 ```
 
+### [Tabela Usada no Projeto](https://docs.google.com/spreadsheets/d/1SAoPy9T2tyURlwY0pSDOOG-zrkMZi8xf4i0L74jdaZM/edit?gid=0#gid=0)
+
 ### Bibliotecas
 Todas as bibliotecas estão no arquivo [requirements.txt](./auxiliar/requirements.txt) na pasta "auxiliar", porém podem serem instaladas pelo comando:
 ```bash
