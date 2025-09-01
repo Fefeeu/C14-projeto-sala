@@ -1,3 +1,6 @@
+import pandas as pd
+from typing import List, Dict
+
 class DatasetManager:
     def __init__(self, caminho_csv: str):
         self.caminho_csv = caminho_csv

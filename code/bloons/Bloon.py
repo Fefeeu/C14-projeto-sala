@@ -1,3 +1,5 @@
+from typing import List, Dict
+
 class Bloon:
     def __init__(self, nome: str, vida_base: int, velocidade: float, imunidades: List[str], filhos: Dict[str, int]):
         self._nome = nome
