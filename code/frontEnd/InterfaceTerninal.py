@@ -1,3 +1,5 @@
+from dataManager.DatasetManager import DatasetManager
+
 class InterfaceTerminal:
     def __init__(self, dataset_manager: DatasetManager):
         self.dataset_manager = dataset_manager
