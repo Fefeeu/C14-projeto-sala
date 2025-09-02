@@ -30,7 +30,7 @@ class Bloon:
         return self._filhos
 
     def __str__(self):
-        filhos_str = ", ".join([f"{qtd}x {nome}" for nome, qtd in self._filhos.items()]) if self._filhos else "Nenhum"
+        filhos_str = ", ".join([f"{quantidade}x {nome}" for nome, quantidade in self._filhos.items()]) if self._filhos else "Nenhum"
         imunidades_str = ", ".join(self._imunidades) if self._imunidades else "Nenhuma"
         return (
             f"\n=== {self._nome} ===\n"
