@@ -9,6 +9,7 @@ class DatasetManager:
         self.baloes: Dict[str, Bloon] = {}
 
     def carregar_dataset(self):
+        self.baloes.clear()
         df = pd.read_csv(self.caminho_csv)
         for _, linha in df.iterrows():
             nome = linha['nome']
