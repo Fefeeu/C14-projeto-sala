@@ -1,4 +1,4 @@
-from dataManager.DatasetManager import DatasetManager
+from app.dataManager.DatasetManager import DatasetManager
 
 class InterfaceTerminal:
     def __init__(self, dataset_manager: DatasetManager):

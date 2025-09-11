@@ -1,6 +1,6 @@
 import pytest
 import io
-from dataManager.DatasetManager import DatasetManager # ESSA ARQUIVO ESTA NO LUGAR ERRADO
+from app.dataManager.DatasetManager import DatasetManager  # Ajuste o caminho conforme a estrutura do seu projeto
 # PQ NAO CONSEGUI IMPORTAR DIRETO DO DATA MANAGER DE MANEIRA CORRETA
 
 #1 invalido
