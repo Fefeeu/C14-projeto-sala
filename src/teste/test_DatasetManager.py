@@ -1,7 +1,6 @@
 import pytest
 import io
-from app.dataManager.DatasetManager import DatasetManager  # Ajuste o caminho conforme a estrutura do seu projeto
-# PQ NAO CONSEGUI IMPORTAR DIRETO DO DATA MANAGER DE MANEIRA CORRETA
+from app.dataManager.DatasetManager import DatasetManager
 
 #1 invalido
 def test_carregar_dataset_com_caminho_invalido():
