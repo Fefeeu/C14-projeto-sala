@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "projeto_c14_sala_de_aula"
+version = "0.1.0"
+authors = [
+  { name="Fefe", email="f.ferreira@ges.inatel.br" },
+]
+description = "Um projeto da diciplina de C14 do inatel. Esse projeto tem como objetivo mostras informações e estatisticas das rodadas do jogo Bloons Tower Defense 6"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+"numpy==2.3.2",
+"pandas==2.3.1",
+"python-dateutil==2.9.0.post0",
+"pytz==2025.2",
+"tzdata==2025.2",
+"matplotlib==3.10.5",
+"matplotlib-inline==0.1.7",
+"pyparsing==3.2.3",
+"fonttools==4.59.0",
+"kiwisolver==1.4.9",
+"typing_extensions==4.14.1",
+"pytest==8.4.1",
+]
