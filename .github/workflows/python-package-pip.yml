@@ -65,10 +65,30 @@ jobs:
           mkdir -p reports
           pytest --html=reports/test_report.html
 
+# Passo 1: Habilitar o GitHub Pages no seu Repositório
+# No seu repositório no GitHub, vá em Settings (Configurações).
+# No menu à esquerda, clique em Pages.
+# Na seção "Build and deployment", em "Source", selecione GitHub Actions.
+
       - name: Upload Test Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-de-teste
           path: reports/
- 
+  deploy:
+    needs: teste
+  
+    permissions:
+      pages: write
+      id-token: write
+  
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
