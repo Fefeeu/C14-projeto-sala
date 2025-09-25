@@ -1,45 +1,38 @@
-name: Python Package using Conda
+name: Python Package using Pip
 
 on:
   workflow_dispatch:
   push:
-    branches: [ "develop" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main", "develop" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    - name: Instalando Python 3.12.9
-    # v5 é para usarmos com o pip
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12.9'
-        cache: 'pip'
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Instalando build tool
-      run: |
-        python -m pip install build
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
 
-    - name: Construindo Pacote
-      # Este comando criará uma pasta 'dist/' e colocará dois arquivos dentro dela: um arquivo .whl (wheel) 
-      # e um .tar.gz (source archive).
-      run: |
-        python -m build
-    
-    - name: Build com pip
-      run: |
-        cd auxiliar
-        pip install -r requiriments.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r auxiliar/requirements.txt # Corrigido para o caminho correto
 
-    - name: Upload do package artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: python-package # Um nome descritivo para o seu artefato
-        path: dist/
-      
+      - name: Install build tool
+        run: python -m pip install build
 
-    
+      - name: Build package
+        run: python -m build
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package
+          path: dist/
