@@ -90,39 +90,22 @@ jobs:
         uses: actions/deploy-pages@v4
         
   notificacao:
-    needs: build
+    needs: build 
+    
     runs-on: ubuntu-latest
     
-    env:
-      REMETENTE_EMAIL: ${{ secrets.REMETENTE_EMAIL }}
-      SENHA_EMAIL: ${{ secrets.SENHA_EMAIL }}
-      DESTINATARIO_EMAIL: ${{ secrets.DESTINATARIO_EMAIL }}
-      TITULO_EMAIL: "Pipeline do Repositório ${{ github.repository }} Concluída"
-      CORPO_EMAIL: "O build e os testes foram concluídos com sucesso."
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Enviar notificação com mailutils
-        run: |
-          # 1. Instala as dependências necessárias
-          sudo apt-get update && sudo apt-get install -y mailutils
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-          # 2. Configura o .mailrc para usar o SMTP do Gmail
-          #    Isso usa as variáveis de ambiente (REMETENTE_EMAIL, SENHA_EMAIL)
-          echo "
-          set smtp=smtp://smtp.gmail.com:587
-          set smtp-use-starttls
-          set smtp-auth=login
-          set smtp-auth-user=\"$REMETENTE_EMAIL\"
-          set smtp-auth-password=\"$SENHA_EMAIL\"
-          set from=\"Notificação GitHub Actions <$REMETENTE_EMAIL>\"
-          " > ~/.mailrc
-
-          # 3. Adiciona um log para verificação
-          echo "Tentando enviar e-mail para: $DESTINATARIO_EMAIL"
-
-          # 4. Executa o comando para enviar o e-mail
-          echo "$CORPO_EMAIL" | mail -s "$TITULO_EMAIL" "$DESTINATARIO_EMAIL"
-          
-          echo "Comando de envio de e-mail finalizado."
+      - name: Enviar notificação por e-mail
+        env:
+          EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+          SENHA_EMAIL: ${{ secrets.SENHA_EMAIL }}
+          EMAIL_DESTINATARIO: ${{ secrets.EMAIL_DESTINATARIO }}
+        run: python scripts/enviar_email.py
