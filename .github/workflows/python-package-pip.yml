@@ -88,3 +88,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+  notificacao:
+    needs: build
+    
+    runs-on: ubuntu-latest
+    
+    env:
+      DESTINATARIO_EMAIL: ${{ secrets.DESTINATARIO_EMAIL }}
+      
+      MAIL_SUBJECT: "Pipeline Da Build Concluída com Sucesso!"
+      MAIL_BODY: "O build no repositório ${{ github.repository }} foi concluido."
+
+    steps:
+      - name: Enviar notificação
+        run: |
+          run: sh scripts/enviando_email.sh
