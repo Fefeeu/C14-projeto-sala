@@ -101,4 +101,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Enviar notificação
         run: |
-          run: sh scripts/enviando_email.sh
+          sh scripts/enviando_email.sh
