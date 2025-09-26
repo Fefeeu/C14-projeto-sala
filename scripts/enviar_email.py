@@ -26,6 +26,7 @@ try:
     print("E-mail de notificação enviado com sucesso!")
 
 except KeyError as e:
-    print(f"Erro: A variável de ambiente {e} não foi definida.")
+    print(f"!!!Erro: A variável de ambiente {e} não foi definida.")
 except Exception as e:
-    print(f"Falha ao enviar e-mail: {e}")
+    print(f"!!!Falha ao enviar e-mail: {e}")
+    print(f"{REMETENTE}\n{SENHA}\n{DESTINATARIO}")
