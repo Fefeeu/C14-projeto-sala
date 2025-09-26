@@ -5,6 +5,19 @@ Um projeto da diciplina de C14 do inatel. Esse projeto tem como objetivo mostras
 
 O projeto é feito em Python3, com o auxilio de bibliotecas externas.
 
+## Prefixos de Commit
+|Prefixo|Significado|
+|-------|-----------|
+|test:| Update test/* files|
+|dist:| Changes to submodules, version bumps, updates to package.json|
+|minor:| Small changes|
+|doc:| Updates to documentation|
+|fix:| Bug fixes|
+|bin:| Update binary scripts associated with the project|
+|refactor:| Refactor of existing code|
+|nit:| Small code review changes mainly around style or syntax|
+|feat:| New features|
+
 ## Clonando o Projeto Para Sua Maquina
 Para poder contribuir nesse projeto basta clicar no botão ***Fork*** localizado no canto superior direito dessa pagina (web), e coloque esse comando no terminal:
 ```bash

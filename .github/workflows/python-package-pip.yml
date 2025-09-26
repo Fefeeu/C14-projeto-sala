@@ -23,7 +23,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r auxiliar/requirements.txt # Corrigido para o caminho correto
+          pip install . 
+          # instala o projeto e suas dependências a partir do pyproject.toml
 
       - name: Install build tool
         run: python -m pip install build
@@ -36,3 +37,75 @@ jobs:
         with:
           name: python-package
           path: dist/
+
+  teste:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install . pytest pytest-html
+          # instala o projeto e suas dependências a partir do pyproject.toml
+
+      # TODO: remover os arquivos .csv do projeto e baixar de um servidor remoto por terminal
+      - name: Test with Pytest
+        run: |
+          mkdir -p reports
+          pytest --html=reports/index.html
+
+# Passo 1: Habilitar o GitHub Pages no seu Repositório
+# No seu repositório no GitHub, vá em Settings (Configurações).
+# No menu à esquerda, clique em Pages.
+# Na seção "Build and deployment", em "Source", selecione GitHub Actions.
+
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: reports/
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: teste
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+  notificacao:
+    needs: build 
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Enviar notificação por e-mail
+        env:
+          EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+          SENHA_EMAIL: ${{ secrets.SENHA_EMAIL }}
+          EMAIL_DESTINATARIO: ${{ secrets.EMAIL_DESTINATARIO }}
+        run: python scripts/enviar_email.py

@@ -1,3 +1,7 @@
-*.csv
-.vscode/*
 *.pyc
+
+.vscode/*
+.pytest_cache/*
+
+possivel_evolucao.txt
+testes_manuais.py

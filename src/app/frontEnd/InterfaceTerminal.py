@@ -1,4 +1,4 @@
-from dataManager.DatasetManager import DatasetManager
+from app.dataManager.DatasetManager import DatasetManager
 
 class InterfaceTerminal:
     def __init__(self, dataset_manager: DatasetManager):
@@ -6,7 +6,7 @@ class InterfaceTerminal:
 
     def menu(self):
         while True:
-            print("\n=== BTD6 Pokedex ===")
+            print("\n=== BTD6 DataBase ===")
             print("1. Listar todos os balões")
             print("2. Buscar informações de um balão")
             print("3. Sair")
@@ -18,7 +18,7 @@ class InterfaceTerminal:
             elif opcao == '2':
                 self.buscar_bloon()
             elif opcao == '3':
-                print("Saindo da Pokedex...")
+                print("Saindo da DataBase...")
                 break
             else:
                 print("Opção inválida!")
