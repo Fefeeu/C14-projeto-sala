@@ -96,11 +96,9 @@ jobs:
     
     env:
       DESTINATARIO_EMAIL: ${{ secrets.DESTINATARIO_EMAIL }}
-      
-      MAIL_SUBJECT: "Pipeline Da Build Concluída com Sucesso!"
-      MAIL_BODY: "O build no repositório ${{ github.repository }} foi concluido."
 
     steps:
+      - uses: actions/checkout@v4
       - name: Enviar notificação
         run: |
           run: sh scripts/enviando_email.sh
