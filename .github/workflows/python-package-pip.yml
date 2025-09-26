@@ -95,10 +95,26 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
+      REMETENTE_EMAIL: ${{ secrets.REMETENTE_EMAIL }}
+      SENHA_EMAIL: ${{ secrets.SENHA_EMAIL   }}
       DESTINATARIO_EMAIL: ${{ secrets.DESTINATARIO_EMAIL }}
+
+      TITULO_EMAIL: "Pipeline do Repositório ${{ github.repository }} Concluída"
+      CORPO_EMAIL: "O build e os testes foram concluídos com sucesso."
 
     steps:
       - uses: actions/checkout@v4
-      - name: Enviar notificação
+
+      - name: Enviar notificação com mailutils
         run: |
-          sh scripts/enviando_email.sh
+          sudo apt-get update && sudo apt-get install -y mailutils
+
+          echo "
+          set smtp=smtp://smtp.office365.com:587
+          set smtp-auth=login
+          set smtp-auth-user=$REMETENTE_EMAIL
+          set smtp-auth-password=$SENHA_EMAIL
+          set from=\"$REMETENTE_EMAIL\"
+          " > ~/.mailrc
+
+          bash scripts/enviando_email.sh
