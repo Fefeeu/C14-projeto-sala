@@ -1,4 +1,4 @@
-[![Python CI](https://github.com/Fefeeu/C14-projeto-sala/actions/workflows/python-package-pip.yml)](https://github.com/Fefeeu/C14-projeto-sala/actions/workflows/python-package-pip.yml)
+[![Python CI](https://github.com/Fefeeu/C14-projeto-sala/actions/workflows/python-package-pip.yml/badge.svg)](https://github.com/Fefeeu/C14-projeto-sala/actions/workflows/python-package-pip.yml)
 # Informações Rodadas BTD6 
 
 ## Descrição
