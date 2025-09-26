@@ -1,3 +1,4 @@
+[![Python CI](https://github.com/chrislima-inatel/S107/actions/workflows/maven.yml/badge.svg)](https://github.com/Fefeeu/C14-projeto-sala/actions/workflows/python-package-pip.yml)
 # Informações Rodadas BTD6 
 
 ## Descrição
